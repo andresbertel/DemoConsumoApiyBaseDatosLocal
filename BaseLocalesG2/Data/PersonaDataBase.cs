@@ -25,7 +25,10 @@ namespace BaseLocalesG2.Data
 
         public async Task<Persona> GetOnePersonas(int id)
         {
-            return await database.Table<Persona>().Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await database
+                            .Table<Persona>()
+                            .Where(x => x.Id == id)
+                            .FirstOrDefaultAsync();
         }
 
         public async Task<int> DeletePersona(Persona persona)

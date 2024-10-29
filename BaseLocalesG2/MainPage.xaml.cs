@@ -11,15 +11,15 @@ namespace BaseLocalesG2
         public MainPage()
         {
             InitializeComponent();
-            _apiService = new ApiService("https://8ffe-2800-e2-407f-fb47-b4b3-c770-3133-5607.ngrok-free.app");
+            _apiService = new ApiService("https://9ac4-190-0-245-162.ngrok-free.app");
         }
 
         private async void Insertar(object sender, EventArgs e)
         {
             Persona persona = LlenarPersona();
 
-            int result = await App.PersonaDataBase.GuardarPersona(persona);
-            //int result = await _apiService.PostAsync<Persona,int>("api/Personas", persona);
+           // int result = await App.PersonaDataBase.GuardarPersona(persona);
+            int result = await _apiService.PostAsync<Persona,int>("api/Personas", persona);
 
             if (result > 0)
             {
@@ -34,8 +34,8 @@ namespace BaseLocalesG2
         private async void Actualizar(object sender, EventArgs e)
         {
             Persona persona = LlenarPersona(true);
-            int result = await App.PersonaDataBase.ActualizarPersona(persona);
-            //int result = await _apiService.PutAsync<Persona,int>($"api/Personas/{persona.Id}",persona);
+           // int result = await App.PersonaDataBase.ActualizarPersona(persona);
+            int result = await _apiService.PutAsync<Persona,int>($"api/Personas/{persona.Id}",persona);
             if (result > 0)
             {
                 await DisplayAlert("Update", "Exitoo", "Ok");
@@ -50,8 +50,8 @@ namespace BaseLocalesG2
 
             if (persona != null)
             {
-                result = await App.PersonaDataBase.DeletePersona(persona);
-                //result = await _apiService.DeleteAsync($"api/Personas/{persona.Id}");
+                //result = await App.PersonaDataBase.DeletePersona(persona);
+                result = await _apiService.DeleteAsync($"api/Personas/{persona.Id}");
             }
 
 
@@ -80,8 +80,8 @@ namespace BaseLocalesG2
         }
         private async void BucarTodos(object sender, EventArgs e)
         {
-            List<Persona> listadoPersonas = await App.PersonaDataBase.GetPersonas();
-           // List<Persona> listadoPersonas = await _apiService.GetAsync<List<Persona>>("api/Personas");
+           // List<Persona> listadoPersonas = await App.PersonaDataBase.GetPersonas();
+            List<Persona> listadoPersonas = await _apiService.GetAsync<List<Persona>>("api/Personas");
             TodosView todosView = new TodosView(listadoPersonas);
 
             await Navigation.PushAsync(todosView);
@@ -110,11 +110,11 @@ namespace BaseLocalesG2
 
         private async Task<Persona> Buscar()
         {
-            var personaBuscarda =
-                   await App.PersonaDataBase.GetOnePersonas(Convert.ToInt32(id.Text));
+           // var personaBuscarda =
+                  // await App.PersonaDataBase.GetOnePersonas(Convert.ToInt32(id.Text));
 
-           /* var personaBuscarda =
-                await _apiService.GetAsync<Persona>($"api/Personas/{id.Text}");*/
+            var personaBuscarda =
+                await _apiService.GetAsync<Persona>($"api/Personas/{id.Text}");
 
             return personaBuscarda;
         }
