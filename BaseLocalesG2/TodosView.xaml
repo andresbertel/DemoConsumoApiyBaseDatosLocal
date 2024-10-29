@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BaseLocalesG2.TodosView"
+             Title="TodosView">
+    <StackLayout>
+        <CollectionView x:Name="listadoPersonas">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,*,*">
+                        <Label Text="{Binding Id}" Grid.Column="0"/>
+                        <Label Text="{Binding Nombres}" Grid.Column="1"/>
+                        <Label Text="{Binding Apellidos}" Grid.Column="2"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>

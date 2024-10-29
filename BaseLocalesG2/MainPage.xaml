@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BaseLocalesG2.MainPage">
+
+    <StackLayout>
+        <StackLayout Orientation="Vertical">
+            <Label Text="Id"/>
+            <Entry x:Name="id"/>
+            <Button Text="Buscar uno"
+                    Clicked="BuscarUno"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical">
+            <Label Text="Nombre"/>
+            <Entry x:Name="nombre"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical">
+            <Label Text="Apellidos"/>
+            <Entry x:Name="apellidos"/>
+        </StackLayout>
+
+        <StackLayout>
+            <Button Text="Insertar"
+                    Clicked="Insertar"/>
+
+            <Button Text="Todos"
+                    Clicked="BucarTodos"/>
+
+            <Button Text="Actualizar"
+                    Clicked="Actualizar"/>
+
+            <Button Text="Eliminar"
+                    Clicked="Eliminar"/>
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>
