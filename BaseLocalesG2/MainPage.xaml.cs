@@ -5,20 +5,20 @@ namespace BaseLocalesG2
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        
         private ApiService _apiService;
 
         public MainPage()
         {
             InitializeComponent();
-            _apiService = new ApiService("https://9ac4-190-0-245-162.ngrok-free.app");
+            _apiService = new ApiService("https://a0ca-190-0-245-162.ngrok-free.app");
         }
 
         private async void Insertar(object sender, EventArgs e)
         {
             Persona persona = LlenarPersona();
 
-           // int result = await App.PersonaDataBase.GuardarPersona(persona);
+           //int result = await App.PersonaDataBase.GuardarPersona(persona);
             int result = await _apiService.PostAsync<Persona,int>("api/Personas", persona);
 
             if (result > 0)
@@ -34,8 +34,8 @@ namespace BaseLocalesG2
         private async void Actualizar(object sender, EventArgs e)
         {
             Persona persona = LlenarPersona(true);
-           // int result = await App.PersonaDataBase.ActualizarPersona(persona);
-            int result = await _apiService.PutAsync<Persona,int>($"api/Personas/{persona.Id}",persona);
+            //int result = await App.PersonaDataBase.ActualizarPersona(persona);
+           int result = await _apiService.PutAsync<Persona,int>($"api/Personas/{persona.Id}",persona);
             if (result > 0)
             {
                 await DisplayAlert("Update", "Exitoo", "Ok");
@@ -50,7 +50,7 @@ namespace BaseLocalesG2
 
             if (persona != null)
             {
-                //result = await App.PersonaDataBase.DeletePersona(persona);
+               // result = await App.PersonaDataBase.DeletePersona(persona);
                 result = await _apiService.DeleteAsync($"api/Personas/{persona.Id}");
             }
 
@@ -110,8 +110,8 @@ namespace BaseLocalesG2
 
         private async Task<Persona> Buscar()
         {
-           // var personaBuscarda =
-                  // await App.PersonaDataBase.GetOnePersonas(Convert.ToInt32(id.Text));
+            //var personaBuscarda =
+              //     await App.PersonaDataBase.GetOnePersonas(Convert.ToInt32(id.Text));
 
             var personaBuscarda =
                 await _apiService.GetAsync<Persona>($"api/Personas/{id.Text}");
